@@ -1,0 +1,209 @@
+/* ===============================
+   GLOBAL
+================================= */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.light-mode {
+    background: #bed1a9;
+    color: #1F1F1F;
+}
+
+.dark-mode {
+    background: #2a040b;
+    color: #F4F4F2;
+}
+
+/* ===============================
+   NAVBAR
+================================= */
+
+.navbar {
+    background: linear-gradient(to right, #6D071A, #800020);
+    padding: 14px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    flex-wrap: wrap;
+}
+
+.navbar h2 {
+    margin: 0;
+    color: #F4F4F2;
+    font-weight: 600;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.navbar a,
+.navbar button {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.25s ease;
+}
+
+.navbar a:hover,
+.navbar button:hover {
+    background-color: #e8f2dd;
+    color: #1F1F1F;
+}
+
+/* ===============================
+   FORM CENTERING
+================================= */
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+/* ===============================
+   CARD
+================================= */
+
+.card {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.dark-mode .card {
+    background: rgba(79, 74, 74, 0.4);
+}
+
+/* ===============================
+   INPUTS
+================================= */
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* ===============================
+   BUTTONS
+================================= */
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #6D071A;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #e6eedd;
+    color: #1F1F1F;
+}
+
+/* ===============================
+   DASHBOARD LAYOUT
+================================= */
+
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dashboard-card {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* ===============================
+   TABLE
+================================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 500px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #6D071A;
+    color: white;
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================= */
+
+h1 {
+    color: #6D071A;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .navbar-right {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    table {
+        min-width: 400px;
+    }
+}

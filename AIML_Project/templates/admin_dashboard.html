@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<div style="display:flex; gap:20px; flex-wrap:wrap;">
+
+    <div class="card" style="flex:1;">
+        <h3>Total Users</h3>
+        <p style="font-size:22px;">{{ total_users if total_users else 0 }}</p>
+    </div>
+
+    <div class="card" style="flex:1;">
+        <h3>Total Products</h3>
+        <p style="font-size:22px;">{{ total_products if total_products else 0 }}</p>
+    </div>
+
+    <div class="card" style="flex:1;">
+        <h3>Predicted Demand</h3>
+        <p style="font-size:22px; color:#B11226;">
+            {{ prediction if prediction else "N/A" }}
+        </p>
+    </div>
+
+</div>
+
+<br>
+
+<div class="card">
+    <h3>Sales Trend</h3>
+    <canvas id="salesChart"></canvas>
+</div>
+
+{% if shortage %}
+<div class="card" style="background:#ffe6e6; border-left:5px solid #B11226;">
+    <h3>{{ shortage }}</h3>
+</div>
+{% endif %}
+
+<script>
+var ctx = document.getElementById('salesChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ labels|safe if labels else [] }},
+        datasets: [{
+            label: 'Sales',
+            data: {{ sales|safe if sales else [] }},
+            borderColor: '#B11226',
+            fill: false
+        }]
+    }
+});
+</script>
+
+{% endblock %}

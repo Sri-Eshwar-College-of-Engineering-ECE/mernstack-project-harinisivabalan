@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="text-align:center; padding:80px 20px;">
+
+    <h1 style="font-size:42px; margin-bottom:20px;">
+    Welcome to StockSeek
+    </h1>
+
+    <p style="max-width:700px; margin:auto; font-size:18px; color:#555;">
+    A Machine Learning powered inventory intelligence platform that predicts
+    stock shortages before they impact your business.
+    </p>
+
+    <div style="margin-top:40px;">
+        <a href="/login" 
+           style="background:#6D071A; color:white; padding:12px 30px; border-radius:30px; text-decoration:none; margin-right:15px;">
+            Login
+        </a>
+
+        <a href="/signup" 
+           style="background:#9CAF88; color:#1F1F1F; padding:12px 30px; border-radius:30px; text-decoration:none;">
+            Get Started
+        </a>
+    </div>
+
+</div>
+
+<div class="dashboard-container">
+    <div class="card" style="width:900px; margin-top:40px;">
+        <h3 style="text-align:center;">Core Features</h3>
+
+        <ul style="line-height:1.8; font-size:16px;">
+            <li>Real-Time Stock Monitoring</li>
+            <li>Machine Learning Based Demand Forecasting</li>
+            <li>Shortage Risk Classification (Safe / At Risk / Critical)</li>
+            <li>Role-Based Access (Admin, Seller, Customer)</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

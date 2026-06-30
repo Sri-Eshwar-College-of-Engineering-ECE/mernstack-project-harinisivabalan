@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Monitoring System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="light-mode">
+
+<nav class="navbar"
+    <h2>StockSeek</h2>
+
+    <div class="navbar-right">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+}
+</script>
+
+</body>
+</html>

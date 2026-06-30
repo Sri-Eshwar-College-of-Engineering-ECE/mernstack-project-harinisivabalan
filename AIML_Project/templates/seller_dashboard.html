@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center;">Seller Dashboard</h2>
+
+<div class="dashboard-container">
+    <div class="card dashboard-card">
+
+        <h3>Add Product</h3>
+
+        <form method="post" action="/add_product">
+            <input type="text" name="name" placeholder="Product Name" required>
+            <input type="number" name="stock" placeholder="Stock" required>
+            <input type="number" step="0.01" name="price" placeholder="Price" required>
+            <button type="submit">Add Product</button>
+        </form>
+
+    </div>
+</div>
+
+{% if products %}
+<div class="dashboard-container">
+    <div class="card dashboard-card">
+
+        <h3>Your Products</h3>
+
+        <table>
+            <tr>
+              <th>Name</th>
+              <th>Stock</th>
+              <th>Price</th>
+              <th>Predicted Demand</th>
+              <th>Status</th>
+            </tr>
+
+            {% for product in products %}
+            <tr>
+              <td>{{ product[0] }}</td>
+              <td>{{ product[1] }}</td>
+              <td>₹ {{ product[2] }}</td>
+              <td>{{ product[3] }}</td>
+
+              <td>
+                {% if product[4] == "CRITICAL" %}
+                 <span style="color:#800020; font-weight:bold;">
+                🚨 CRITICAL
+                 </span>
+                {% elif product[4] == "AT RISK" %}
+                  <span style="color:#d4a017; font-weight:bold;">
+                  ⚠ AT RISK
+                 </span>
+                {% else %}
+                  <span style="color:#7E9C6B; font-weight:bold;">
+                  ✅ SAFE
+                  </span>
+                {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</div>
+{% endif %}
+
+{% if labels %}
+<div class="dashboard-container">
+    <div class="card dashboard-card">
+        <h3>ML Sales Trend Prediction</h3>
+        <canvas id="sellerChart"></canvas>
+    </div>
+</div>
+
+<script>
+var ctx = document.getElementById('sellerChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ labels|safe }},
+        datasets: [{
+            label: 'Past Sales',
+            data: {{ sales|safe }},
+            borderColor: '#6D071A',
+            backgroundColor: 'rgba(109,7,26,0.1)',
+            fill: true,
+            tension: 0.3
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#6D071A'
+                }
+            }
+        }
+    }
+});
+</script>
+{% endif %}
+
+{% if labels %}
+<div class="dashboard-container">
+    <div class="card dashboard-card">
+        <h3>Sales Prediction Trend</h3>
+        <canvas id="sellerChart"></canvas>
+    </div>
+</div>
+
+<script>
+var ctx = document.getElementById('sellerChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ labels|safe }},
+        datasets: [{
+            label: 'Sales',
+            data: {{ sales|safe }},
+            borderColor: '#B11226',
+            fill: false
+        }]
+    }
+});
+</script>
+{% endif %}
+
+{% endblock %}

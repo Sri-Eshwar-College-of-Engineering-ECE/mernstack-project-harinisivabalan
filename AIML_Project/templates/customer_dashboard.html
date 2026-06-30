@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center;">Customer Dashboard</h2>
+
+{% if products %}
+<div class="dashboard-container">
+    <div class="card">
+
+        <h3>Available Products</h3>
+
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+
+            {% for product in products %}
+            <tr>
+                <td>{{ product[0] }}</td>
+                <td>{{ product[1] }}</td>
+                <td>₹ {{ product[2] }}</td>
+
+                <td>
+                    {% if product[1] <= 5 %}
+                        <span style="color:#800020; font-weight:bold;">
+                            Low Stock
+                        </span>
+                    {% else %}
+                        <span style="color:#7E9C6B; font-weight:bold;">
+                            Available
+                        </span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+</div>
+{% else %}
+<div class="dashboard-container">
+    <div class="card">
+        <p>No products available.</p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
